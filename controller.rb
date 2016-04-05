@@ -23,7 +23,7 @@ class Controller
 		  "no ingresaste opcion"
 		end
 	end
-#prueba de git
+
 	def new_user(data_register)
 		#mandar el metodo que guarda en el CSV
 		@model.create(User.new(data_register[0],data_register[1],data_register[2],data_register[3]))
