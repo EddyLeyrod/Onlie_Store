@@ -2,9 +2,12 @@ require 'csv'
 
 class Product
 	#mostrar todos los productos
+	attr_accessor :name
+	def initialize(name)
+		@name = name	
+	end
 
 end
-
 
 class User
 	attr_accessor :name,:email,:pass,:type
@@ -13,16 +16,43 @@ class User
 		 @email = email
 		 @pass = pass
 		 @type = type
+
 	end
 end
 
+#agrega el usuario al CSV
 class Store
-	def create(user)
-		CSV.open("Users.csv", "a+") do |csv|
-			csv << [user.name,user.email,user.pass,user.type]
+
+	def initialize
+		@users = []
+		@products = []
+	end
+
+	def create_user(user)
+		CSV.open("users.csv", "a+") do |csv|
+			csv
+		end 
+	end
+
+	def search_user
+		CSV.foreach("users.csv") do |user|
+			@users << User.new(user[0],user[1],user[2],user[3])
+		end	
+		@users
+	end
+
+
+	def create_product(product)
+		CSV.open("products.csv", "a+") do |csv|
+			csv << [product.name]
 		end
 	end
-	
+
+	def show_products
+		CSV.foreach("products.csv") do |product|
+			@products << Product.new(product[0])
+		end	
+		@products
+	end
+
 end
-	
-		
