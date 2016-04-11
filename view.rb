@@ -52,7 +52,7 @@ class View
 		puts "2. Products index"
 		puts "3. Create product"
 		puts "4. Users index"
-		puts "5.Salir"
+		puts "5. Salir"
 		gets.chomp
 	end
 
@@ -62,7 +62,9 @@ class View
 		puts "Select option number:"
 		puts "1. Logout"
 		puts "2. Products index"
-		puts "5. Salir"
+		puts "3. Create product"
+		puts "4. Salir"
+		gets.chomp
 	end
 
 	def welcome_client(user)
@@ -71,7 +73,8 @@ class View
 		puts "Select option number:"
 		puts "1. Logout"
 		puts "2. Products index"
-		puts "5.Salir"
+		puts "3.Salir"
+		gets.chomp
 	end
 
 	def exit
@@ -85,10 +88,12 @@ class View
 
 
 	def products_index(products)
+		puts "\- - - - - -  - - - - - - - "
 		puts "Todos los productos"
 		products.each_with_index do |product, index|
 			puts "#{index+1}.- #{product.name}"
 		end
+		puts "\- - - - - -  - - - - - - - "
 	end
 
 	def new_product
@@ -98,11 +103,12 @@ class View
 	end
 
 	def user_index(users)
+		puts "\- - - - - -  - - - - - - - "
 		puts "Todos los usuarios"
 		users.each_with_index do |user, index|
 			puts "#{index+1}.- #{user.name}"
 		end
-
+		puts "\- - - - - -  - - - - - - - "
 	end
 
 end

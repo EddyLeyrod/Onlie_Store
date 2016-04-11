@@ -16,7 +16,6 @@ class User
 		 @email = email
 		 @pass = pass
 		 @type = type
-
 	end
 end
 
@@ -24,21 +23,19 @@ end
 class Store
 
 	def initialize
-		@users = []
-		@products = []
 	end
-
 	def create_user(user)
 		CSV.open("users.csv", "a+") do |csv|
-			csv
+			csv << [user.name,user.email,user.pass,user.type]
 		end 
 	end
 
 	def search_user
+		users = []
 		CSV.foreach("users.csv") do |user|
-			@users << User.new(user[0],user[1],user[2],user[3])
+			users << User.new(user[0],user[1],user[2],user[3])
 		end	
-		@users
+		users
 	end
 
 
@@ -49,10 +46,11 @@ class Store
 	end
 
 	def show_products
+		products = []
 		CSV.foreach("products.csv") do |product|
-			@products << Product.new(product[0])
+			products << Product.new(product[0])
 		end	
-		@products
+		products
 	end
 
 end
